@@ -1,3 +1,4 @@
+import re
 class Problem1:
 	def __init__(self):
 		self.worda = "Foo"
@@ -20,10 +21,22 @@ class Problem1:
 			print fullword
 
 	def Dots(self,str):
-		print str
+		forreturn = False
+		x = re.search("[0-9A-z](...)[0-9A-z]", str)
+		if x :
+			numbers = re.findall(r'\d', str)
+			i = 0
+			while i < len(numbers) :
+				print int(numbers[i]) + int(numbers[i+1])
+				if int(numbers[i]) + int(numbers[i+1]) <= 10 : 
+					forreturn = True
+				else:
+					forreturn = False
+				i+=2
+		return forreturn
 
 
 
 p1 = Problem1()
-#p1.printNumbers()				
-p1.Dots("Hola Mundo")
+p1.printNumbers()				
+print p1.Dots("arrb6...4xxbl5...eee5")
